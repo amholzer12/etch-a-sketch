@@ -1,12 +1,21 @@
+
+.container {
+    display: flex;
+    width: 800px;
+    justify-content: space-between;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
 .canvas {
     display: flex;
     flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
     height: 500px;
     width: 500px;
-    background-color: blue;
-    color: yellow;
 }
 
 .box {
