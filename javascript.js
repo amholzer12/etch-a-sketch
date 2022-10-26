@@ -1,7 +1,28 @@
 const canvas = document.querySelector(".canvas")
 // hard coding board size for building/testing purposes. will eventually be user input.
-const size = 16
+let size = 16
 let isDragging = false
+const resize = document.querySelector(".resize")
+resize.addEventListener('click', (e) => {
+    const newSize = prompt("How many squares per side of your board do you want this time?", "example: 16");
+    size = newSize;
+    removeBoard(canvas);
+    buildBoard(size);
+});
+
+
+const clear = document.querySelector(".clear")
+clear.addEventListener('click', (e) => {
+    removeBoard(canvas)
+    buildBoard(size)
+})
+
+
+function removeBoard(pants) {
+    while (pants.firstChild) {
+        pants.removeChild(pants.firstChild);
+    }
+}
 
 function buildBoard(size) {
     const gridSize = size * size
@@ -35,4 +56,4 @@ function buildBoard(size) {
 };
 
 buildBoard(size)
-console.log(canvas)
+// console.log(canvas)
