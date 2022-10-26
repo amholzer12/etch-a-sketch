@@ -37,6 +37,7 @@ function buildBoard(size) {
         //only want to draw when mouse is clicked down AND moving
         canvasDiv.addEventListener('mousedown', (e) => {
             isDragging = true;
+            canvasDiv.style.backgroundColor = 'black';
         });
         canvasDiv.addEventListener('mouseup', (e) => {
             isDragging = false;
