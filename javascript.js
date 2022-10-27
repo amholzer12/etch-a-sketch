@@ -2,7 +2,9 @@ const canvas = document.querySelector(".canvas")
 // hard coding board size for building/testing purposes. will eventually be user input.
 let size = 16
 let isDragging = false
-const resize = document.querySelector(".resize")
+let isErasing = false
+
+const resize = document.querySelector(".resize");
 resize.addEventListener('click', (e) => {
     const newSize = prompt("How many squares per side of your board do you want this time?", "example: 16");
     size = +newSize;
@@ -13,8 +15,17 @@ resize.addEventListener('click', (e) => {
     }
 });
 
+const eraser = document.querySelector(".eraser");
+eraser.addEventListener('click', (e) => {
+    isErasing = true
+})
 
-const clear = document.querySelector(".clear")
+const marker = document.querySelector(".marker");
+marker.addEventListener('click', (e) => {
+    isErasing = false
+})
+
+const clear = document.querySelector(".clear");
 clear.addEventListener('click', (e) => {
     removeBoard(canvas)
     buildBoard(size)
@@ -40,14 +51,21 @@ function buildBoard(size) {
         //only want to draw when mouse is clicked down AND moving
         canvasDiv.addEventListener('mousedown', (e) => {
             isDragging = true;
-            canvasDiv.style.backgroundColor = 'black';
+            if (isErasing == false) {
+                canvasDiv.style.backgroundColor = 'black';
+            } else {
+                canvasDiv.style.backgroundColor = 'antiquewhite';
+            }
         });
         canvasDiv.addEventListener('mouseup', (e) => {
             isDragging = false;
         });
         canvasDiv.addEventListener('mouseover', (e) => {
-            if (isDragging == true) {
+            if (isDragging == true && isErasing == false) {
                 canvasDiv.style.backgroundColor = 'black';
+            }
+            if (isDragging == true && isErasing == true) {
+                canvasDiv.style.backgroundColor = 'antiquewhite'
             }
         });
 
