@@ -9,7 +9,7 @@ resize.addEventListener('click', (e) => {
     const newSize = prompt("How many squares per side of your board do you want this time?", "example: 16");
     size = +newSize;
     //using an if statement so code only runs when user input is valid i.e. a number 1-100
-    if (size >=1 || size <=100) {
+    if (size >=1 && size <=100) {
         removeBoard(canvas);
         buildBoard(size);
     }
