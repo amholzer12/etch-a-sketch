@@ -1,8 +1,14 @@
 const canvas = document.querySelector(".canvas")
-// hard coding board size for building/testing purposes. will eventually be user input.
+// hard coding board size for building/testing purposes. will eventually be user input
 let size = 16
 let isDragging = false
 let isErasing = false
+const canvasLabel = document.querySelector(".canvasLabel")
+
+// fixes bug when you are clicking the mouse down and drag it out of the canvas before letting go
+canvas.addEventListener('mouseleave', (e) => {
+    isDragging = false
+});
 
 const resize = document.querySelector(".resize");
 resize.addEventListener('click', (e) => {
@@ -40,7 +46,7 @@ function removeBoard(pants) {
 
 function buildBoard(size) {
     const gridSize = size * size
-
+    canvasLabel.textContent = `Etch-a-Sketch (${size}x${size})`;
     for (let i = 0; i < gridSize; i++) {
         //making div element to fill the canvas
         const canvasDiv = document.createElement('div');
@@ -70,11 +76,7 @@ function buildBoard(size) {
         });
 
         canvas.appendChild(canvasDiv);
-
     }
-
-
-
 };
 
 buildBoard(size)

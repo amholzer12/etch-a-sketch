@@ -25,3 +25,26 @@
 .original {
     background-color: antiquewhite;
 }
+
+.controlBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.controlLabel {
+    align-self: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.canvasBox {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.canvasLabel {
+    align-self: center;
+    font-size: 26px;
+    font-weight: bold;
+}
